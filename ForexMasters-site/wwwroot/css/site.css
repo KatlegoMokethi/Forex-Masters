@@ -82,6 +82,8 @@ li{
     background-color: midnightblue;
     color: black;
     background-image: url('../images/stock markets/StockMap.jpg ');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
    .vsc {

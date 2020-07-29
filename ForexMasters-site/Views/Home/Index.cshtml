@@ -2,208 +2,215 @@
     ViewData["Title"] = "Home";
 }
 
-    <div class="text-center">
-        <div id="Welcome">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="~/images/logos/FM-LogoBG.jpeg" alt="First slide" width="300" height="300">
+<div class="text-center">
+    <div id="Welcome">
+        <div id="WelcomeCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @*Temporarily hidding this one image, not having equal dimensions with the other two images*@
+                @*<div class="carousel-item active">
+                        <img class="d-block w-100" src="~/images/logos/FM-LogoBG.jpeg" alt="First slide">
+
+                    </div>*@
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="~/images/logos/ForexMasters_Logo.png" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5> Welcome to Forex Masters</h5>
+                        <p>
+                            the place of Experienced professional traders and a home to new forex Traders.
+                            Forex Masters is there to offer you better financial solutions
+                        </p>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/images/logos/ForexMasters_Logo.png" alt="Second slide" width="300" height="300">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/images/logos/PovertySanitizer_Logo.png" alt="Third slide" width="300" height="300">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/images/logos/PovertySanitizer_Logo.png" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>
+                            <strong>Our Main</strong> goal is to change lives through providing the best trading education
+                            and best strategies
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="CompanyInfo">
-            @*add imaghe and wrap*@
-            <h1>About Forex Masters</h1>
-            <p>
-                Forex Masters is Trading Company based in Zimbabwe and has a branch in South Africa
-                and it is fully Registered in Zimbabwe under the Companies Act (Chapter 24.3).
-                Our aim is to provide quality education to people as a way to change their lives
-                through Forex Trading. We also aim to set up other branches through Africa.
-            </p>
+    </div>
+    <div id="CompanyInfo">
+        <h1>About Forex Masters</h1>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <img src="~/images/signals/ReliableSignals.jpeg" style="width: 100%; height:100%" />
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <p class="mb-5 mt-5 pt-5 pb-5">
+                    Forex Masters is Trading Company based in Zimbabwe and has a branch in South Africa
+                    and it is fully Registered in Zimbabwe under the Companies Act (Chapter 24.3).
+                    Our aim is to provide quality education to people as a way to change their lives
+                    through Forex Trading. We also aim to set up other branches through Africa.
+                </p>
+            </div>
         </div>
+    </div>
 
-        <div id="visionStatement" class="vsc">
+    <div id="visionStatement" class="vsc" style="height: 100vh;">
+        <div style="margin-top: 20%; margin-bottom: 20%;">
             <h1>Vision Statement</h1>
             <p>
                 We aim to establish more branches across Africa so as to provide onsite classes
-                and also aim to be the best Forex service provider.
+                <br />and also aim to be the best Forex service provider.
             </p>
             <h1>Mission statement</h1>
             <p>
                 Currently we offering Online classes and Onsite classes in Zimbabwe and South Africa.
             </p>
-
         </div>
+    </div>
 
+    <div id="JoinUs">
+        <h1>JOIN US</h1>
+        <h4>Our Services</h4>
+        <p>
+            <span class="text-primary">Beat The Market Maker Strategy (BTMM)</span><br />
+            Price Action<br />
+            <span class="text-primary">Signals on both indices and Currencies</span><br />
+            Trading Psychology<br />
+            <span class="text-primary">Risk Management</span><br />
+            Lifetime Mentorship
+        </p>
+    </div>
 
+    <div id="Signals">
+        <p>
+            We will include a link to its separate page.
+            <br />
+            Here we'll just briefly mention main categories of the signals...
+        </p>
+    </div>
 
-        <div id="JoinUs">
-            <h1>JOIN US</h1>
-            <h4>Our Services</h4>
-            <ul>
-                <li>Beat The Market Maker Strategy (BTMM)</li>
-                <li>Price Action</li>
-                <li>Signals on both indices and Currencies</li>
-                <li>Trading Psychology</li>
-                <li>Risk Management</li>
-                <li>Lifetime Mentorship</li>
-            </ul>
-        </div>
+    <div id="Payments">
+        <h1 class="text-uppercase">Modes of payment</h1>
 
-        <div id="Signals">
-            <p>
-                We will include a link to its separate page.
-                <br />
-                Here we'll just briefly mention main categories of the signals...
-            </p>
-        </div>
-
-        <div id="Payments">
-            <h1>Modes of payment</h1>
-            <p>
-                Payments made to:<br />
-                Skrill: Ashleymasangano@gmail.com<br />
-                Neteller: kudzaisheashley@gmail.com<br />
-                Paypal: to be provided by Tumelo<br />
-
-                Here I think we'll add images of each payment method and a link to their specific sites for opening an account.
-            </p>
-        </div>
-
-        <div id="Brokers">
-            <h1>Recomended brokers</h1>
-            <p>
-                <div class="row">
-                    <div class="column">
-                        <img src="~/images/brokers/Deriv.jpg" alt="Snow" style="width:100%">
-                    </div>
-                    <div class="column">
-                        <img src="~/images/brokers/Exness.jpg" alt="Forest" style="width:100%">
-                    </div>
-                    <div class="column">
-                        <img src="~/images/brokers/VeracityMarkets.jpg" alt="Mountains" style="width:100%">
-                    </div>
-                    <div class="column">
-                        <img src="~/images/brokers/XMGlobal.jpg" alt="Mountains" style="width:100%">
-                    </div>
-                </div>
-                @*1. Exness
-                2. Veracity markets
-                3. Deriv.com
-                4. Xm global*@
-            </p>
-            @*We'll add their photos*@
-        </div>
-
-        <div class="container">
-            <div id="carouselContent" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active text-center p-4">
-                        <p>
-                            <strong>Nigel Jimu (Zimbabwe)</strong>
-                            I had lost hope with Trading forex but Forex Masters help me to achieve and reach great heights
-                        </p>
-                    </div>
-                    <div class="carousel-item text-center p-4">
-
-                        <p>
-                            <strong>
-                                Zinhle Mhlangu
-                            </strong>
-                            Joining the Forex Masters team was the best decision I ever made regarding forex trading.
-                            From lessons to mentorship they are the best and I would hesitate to recommend them.
-                        </p>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+        <div class="row">
+            <div class="col">
+                <img src="~/images/payments/Skrill_Image.png" />
+                <p>Skrill: Ashleymasangano@gmail.com</p>
+            </div>
+            <div class="col">
+                <img src="~/images/payments/NetellerLogo.png" />
+                <p>Neteller: kudzaisheashley@gmail.com</p>
+            </div>
+            <div class="col">
+                <img src="~/images/payments/PayPal-Logo.png" style="width:100%" />
+                <p>Paypal: to be provided by Tumelo</p>
             </div>
         </div>
+    </div>
 
+    <div id="Brokers">
+        <h1 class="text-uppercase">Recomended brokers</h1>
+        <p>
+            <div class="row">
+                <div class="column">
+                    <img src="~/images/brokers/Deriv.jpg" alt="Snow" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="~/images/brokers/Exness.jpg" alt="Forest" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="~/images/brokers/VeracityMarkets.jpg" alt="Mountains" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="~/images/brokers/XMGlobal.jpg" alt="Mountains" style="width:100%">
+                </div>
+            </div>
+    </div>
 
+    <div id="testimonials" class="container mt-5" style="background-color: black">
+        <h1>Forex Masters Testimonials</h1>
+        <div id="carouselContent" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active text-center p-4">
+                    <p>
+                        <strong class="text-warning">Nigel Jimu (Zimbabwe)</strong>
+                        - I had lost hope with Trading forex but Forex Masters help me to achieve and reach great heights
+                    </p>
+                </div>
+                <div class="carousel-item text-center p-4">
+                    <p>
+                        <strong class="text-danger">
+                            Zinhle Mhlangu
+                        </strong>
+                        - Joining the Forex Masters team was the best decision I ever made regarding forex trading.
+                        From lessons to mentorship they are the best and I would hesitate to recommend them.
+                    </p>
+                </div>
+                <div class="carousel-item text-center p-4">
+                    <p>
+                        <strong class="text-warning">
+                            Enoch Tempo
+                        </strong>
+                        - Indeed, they are Poverty Sanitisers.  Now I own a business of my own. All thanks to forex Masters
 
+                    </p>
+                </div>
+                <div class="carousel-item text-center p-4">
+                    <p>
+                        Forex masters, your signals are really legit and they earn big profit on the free group I just
+                        imagine how they will be on the vvip group
+                        Thank you, guys.
+                        <strong class="text-danger">Ramadwa Mukovhe(South Africa)</strong>
 
-
-        <div id="testimonials" class="tst">
-
-            <h1>Forex Masters Testimonials</h1>
-            <p>We'll turn this into dynamic slides of text</p>
-            <p>
-                <strong>Nigel Jimu (Zimbabwe)</strong>
-                I had lost hope with Trading forex but Forex Masters help me to achieve and reach great heights
-            </p>
-            <p>
-                <strong>
-                    Zinhle Mhlangu
-                </strong>
-                Joining the Forex Masters team was the best decision I ever made regarding forex trading.
-                From lessons to mentorship they are the best and I would hesitate to recommend them.
-            </p>
-            <p>
-                <strong>
-                    Enoch Tempo
-                </strong>
-                Indeed, they are Poverty Sanitisers.  Now I own a business of my own. All thanks to forex Masters
-
-            </p>
-            <p>
-                Forex masters, your signals are really legit and they earn big profit on the free group I just
-                imagine how they will be on the vvip group
-                Thank you, guys.
-                <strong>Ramadwa Mukovhe(South Africa)</strong>
-
-            </p>
-            <p>
-                I am <strong>
-                    Andrew
-                </strong>from Nigeria learning Forex trading. I came in contact with Forex Master on
-                WhatsApp and since then, my experiences have increased. Couple with his free signals on daily
-                basis and mentorship. I don't know him before but he is doing great to make sure I succeed in
-                my dream and have financial freedom. I appreciate your kind coaching and encouragement.
-                May God Almighty bless you more.
-            </p>
+                    </p>
+                </div>
+                <div class="carousel-item text-center p-4">
+                    <p>
+                        I am <strong class="text-warning">
+                            Andrew
+                        </strong>from Nigeria learning Forex trading. I came in contact with Forex Master on
+                        WhatsApp and since then, my experiences have increased. Couple with his free signals on daily
+                        basis and mentorship. I don't know him before but he is doing great to make sure I succeed in
+                        my dream and have financial freedom. I appreciate your kind coaching and encouragement.
+                        May God Almighty bless you more.
+                    </p>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
+    </div>
 
-        <div id="Socials">
-            @*<h1>Join our Free telegram and whatsapp groups</h1>
+    <div id="Socials">
+        @*<h1>Join our Free telegram and whatsapp groups</h1>
             <p><a href="https://chat.whatsapp.com/DJC8Jy4i4Yw8oSC4Ov5HSZ">Whatsapp free group</a></p>
             <p><a href="https://t.me/joinchat/AAAAAEXJwtzlr88N0GsaGw">Telegram free group</a></p>
             <h3>Visit and follow us on our Instagram page AT-ForexMasters </h3>
             <p>...I think we'll add photos here as well</p>*@
 
-            <div class="row">
+        <div class="row">
 
-                <div class="column">
-                    <a href="https://chat.whatsapp.com/DJC8Jy4i4Yw8oSC4Ov5HSZ"><img src="~/images/socials/WhatsAppGroup.jpg" alt="Mountains" style="width:100%"></a>
-                </div>
-                <div class="column">
-                    <a href=" https://t.me/joinchat/AAAAAEXJwtzlr88N0GsaGw"><img src="~/images/socials/Telegram.png" alt="Mountains" style="width:100%"></a>
-                </div>
-                <div class="column">
-                    <img src="~/images/socials/Insta.jpg" alt="Mountains" style="width:100%">
-                </div>
+            <div class="column">
+                <a href="https://chat.whatsapp.com/DJC8Jy4i4Yw8oSC4Ov5HSZ"><img src="~/images/socials/WhatsAppGroup.jpg" alt="Mountains" style="width:100%"></a>
+            </div>
+            <div class="column">
+                <a href=" https://t.me/joinchat/AAAAAEXJwtzlr88N0GsaGw"><img src="~/images/socials/Telegram.png" alt="Mountains" style="width:100%"></a>
+            </div>
+            <div class="column">
+                <img src="~/images/socials/Insta.jpg" alt="Mountains" style="width:100%">
             </div>
         </div>
+    </div>
 
-        <div id="Team">
-            <h1>Our Forex Masters team</h1>
+    <div id="Team">
+        <h1>Our Forex Masters team</h1>
+        <div class="row card-columns" style="margin-left: 25%; margin-right: 10%;">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="~/images/team/Ashley.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">
+                    <p class="card-text text-dark">
                         Ashley K Masangano (Founder and CEO Harare branch)
                         2 Years experience in forex trading
                         Entrepreneur
@@ -217,33 +224,31 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="~/images/team/Tumelo.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">
+                    <p class="card-text text-dark">
                         Tumelo Mpatse
                         Co-founder of Forex Masters | 1 year Experience with trading | Swinger and scalp Master | Believes in Consistency | Acturial scientist |
                         "Act like you know nothing and you will learn a lot "-Astro
                     </p>
                 </div>
             </div>
-
-
-            @*Cards, I guess...*@
-        </div>
-
-
-        @*put in footer????*@
-        <div id="ContactUs">
-            <p>
-                <strong>Call us/WhatsApp</strong><br />
-                +263 71 761 9529<br />
-                +27 76 044 30 89<br />
-
-                <strong>Email us on:</strong><br />
-                Ashleymasangano@gmail.com<br />
-                Kudzaisheashley@gmail.com<br />
-
-                <strong>Our Address</strong><br />
-                Harare, Zimbabwe<br />
-                Bloemfontein, South Africa
-            </p>
         </div>
     </div>
+
+
+    @*put in footer????*@
+    <div id="ContactUs">
+        <p>
+            <strong>Call us/WhatsApp</strong><br />
+            +263 71 761 9529<br />
+            +27 76 044 30 89<br />
+
+            <strong>Email us on:</strong><br />
+            Ashleymasangano@gmail.com<br />
+            Kudzaisheashley@gmail.com<br />
+
+            <strong>Our Address</strong><br />
+            Harare, Zimbabwe<br />
+            Bloemfontein, South Africa
+        </p>
+    </div>
+</div>
