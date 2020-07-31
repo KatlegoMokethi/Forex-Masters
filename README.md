@@ -7,7 +7,7 @@ A website for a Forex trading company, Forex Masters.
 <br>
 ### [project under development...]
 ## Screen captures
-![](Docs/Screenshot_0003_1.jpg)
-![](Docs/Screenshot_0002_2.jpg)
-![](Docs/Screenshot_0001_3.jpg)
-![](Docs/Screenshot_0000_4.jpg)
+![](docs/Screenshot_0003_1.jpg)
+![](docs/Screenshot_0002_2.jpg)
+![](docs/Screenshot_0001_3.jpg)
+![](docs/Screenshot_0000_4.jpg)
