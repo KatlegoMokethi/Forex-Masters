@@ -24,7 +24,7 @@
                 <!--Navbar Brand-->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <h3 class="text-light">
-                        <img src="~/images/logos/ForexMasters_Logo.png" width="60px;"/>
+                        <img src="~/images/logos/ForexMasters_Logo.png" width="60px;" />
                     </h3>
                 </a>
                 <!--Hamburger menu-->
@@ -46,7 +46,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>                        
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -59,10 +59,55 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - ForexMasters_site - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer style="background-color: black;">
+        <!-- Footer Links -->
+        <div class="container text-light text-center text-md-left pt-5">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- About -->
+                <div class="col-sm-12 col-md-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase font-weight-bold">FOREX MASTERS</h6>
+                    <p>
+                        -Offering better financial solutions.<br />
+                        -Changing lives through providing the best trading education and best strategies.
+                    </p>
+                </div>
+                <!-- //About -->
+                <!-- Contact -->
+                <div class="contact col-sm-12 col-md-3 mx-auto mb-4">
+                    <h6><i class="fa fa-envelope" aria-hidden="true"></i> Email us on:</h6>
+                    <p>
+                        Ashleymasangano@gmail.com<br />
+                        Kudzaisheashley@gmail.com
+                    </p>
+                </div>
+                <br />
+                <div class="contact col-sm-12 col-md-3 mx-auto mb-4">
+                    <h6><i class="fa fa-phone-alt" aria-hidden="true"></i> Call/WhatsApp:</h6>
+                    <p>
+                        +263 71 761 9529<br />
+                        +27 76 044 30 89
+                    </p>
+                </div>
+                <br />
+                <div class="contact col-sm-12 col-md-3 mx-auto mb-4">
+                    <h6><i class="fa fa-map-marker" aria-hidden="true"></i> Location:</h6>
+                    <p>
+                        Harare, Zimbabwe<br />
+                        Bloemfontein, South Africa
+                    </p>
+                </div>
+                <!-- //Contact -->
+            </div>
+            <!-- //Grid row -->
+            <!-- Footer Links -->
+            <!-- Copyright -->
+            <div class="text-center text-muted">
+                &copy; Copyright @DateTime.Now.Year.ToString() Forex Masters. All rights reserved
+            </div>
         </div>
+        <!-- Copyright -->
     </footer>
 
     <environment include="Development">
