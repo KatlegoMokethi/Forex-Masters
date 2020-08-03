@@ -18,6 +18,10 @@ html {
   }
 }
 
+.signal-border {
+    border: 2px solid yellow;
+}
+
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
