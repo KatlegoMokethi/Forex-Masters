@@ -3,37 +3,33 @@
 }
 
 <div class="text-center">
-    <div id="Welcome">
-        <div id="WelcomeCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                @*Temporarily hidding this one image, not having equal dimensions with the other two images*@
-                @*<div class="carousel-item active">
-                        <img class="d-block w-100" src="~/images/logos/FM-LogoBG.jpeg" alt="First slide">
-
-                    </div>*@
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="~/images/logos/ForexMasters_Logo.png" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5> Welcome to Forex Masters</h5>
-                        <p>
-                            the place of Experienced professional traders and a home to new forex Traders.
-                            Forex Masters is there to offer you better financial solutions
-                        </p>
+    <div class="container">
+        <div id="Welcome">
+            <div id="WelcomeCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="~/images/logos/ForexMasters_Logo.png" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5> Welcome to Forex Masters</h5>
+                            <p>
+                                the place of Experienced professional traders and a home to new forex Traders.
+                                Forex Masters is there to offer you better financial solutions
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="~/images/logos/PovertySanitizer_Logo.png" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p>
-                            <strong>Our Main</strong> goal is to change lives through providing the best trading education
-                            and best strategies
-                        </p>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="~/images/logos/PovertySanitizer_Logo.png" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>
+                                <strong>Our Main</strong> goal is to change lives through providing the best trading education
+                                and best strategies
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div id="CompanyInfo">
         <h1 class="text-warning font-weight-bold">About Forex Masters</h1>
         <div class="row">
@@ -65,30 +61,34 @@
     </div>
 
     <div id="Signals" class="mt-5 mb-5">
-        <a asp-controller="Home" asp-action="Services" class="btn btn-warning text-white font-weight-bold" style="border-radius: 50px;">
+        <a asp-controller="Home" asp-action="Signals" class="btn btn-warning text-white font-weight-bold" style="border-radius: 50px;">
             Get Our Exclusive Signals
         </a>
     </div>
+    <div class="container">
+        <div id="Payments">
+            <h1 class="font-weight-bold">Modes of Payment</h1>
 
-    <div id="Payments">
-        <h1 class="font-weight-bold">Modes of Payment</h1>
-
-        <div class="row">
-            <div class="col">
-                <img src="~/images/payments/Skrill_Image.png" />
-                <p>Skrill: Ashleymasangano@gmail.com</p>
-            </div>
-            <div class="col">
-                <img src="~/images/payments/NetellerLogo.png" />
-                <p>Neteller: kudzaisheashley@gmail.com</p>
-            </div>
-            <div class="col">
-                <img src="~/images/payments/PayPal-Logo.png" style="width:100%" />
-                <p>Paypal: to be provided by Tumelo</p>
+            <div class="row">
+                <div class="col">
+                    <img src="~/images/payments/Skrill_Image.png" />
+                    <p>Skrill: Ashleymasangano@gmail.com</p>
+                </div>
+                <div class="col">
+                    <img src="~/images/payments/NetellerLogo.png" />
+                    <p>Neteller: kudzaisheashley@gmail.com</p>
+                </div>
+                <div class="col">
+                    <img src="~/images/payments/CapitecPayment.png" style="width:100%" />
+                    <p>
+                        <strong>CAPITEC BANK</strong><br />
+                        <strong>Account number:</strong> 1533255189<br />
+                        <strong>Account Type:</strong> Savings
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
     <div id="testimonials" class="container mt-5" style="background-color: black">
         <h1 class="font-weight-bold">Forex Masters Testimonials</h1>
         <div id="carouselContent" class="carousel slide" data-ride="carousel">
@@ -148,22 +148,22 @@
             </a>
         </div>
     </div>
-
-    <div id="Socials" class="mb-3 mt-3">
-        <h1 class="font-weight-bold">Connect With Us</h1>
-        <div class="row">
-            <div class="col-sm-12 col-md-4 SocialMedia">
-                <a href="https://chat.whatsapp.com/DJC8Jy4i4Yw8oSC4Ov5HSZ"><img src="~/images/socials/WhatsAppGroup.jpg" alt="WhatsApp Group Chat" style="width:100%"></a>
-            </div>
-            <div class="col-sm-12 col-md-4 SocialMedia">
-                <a href=" https://t.me/joinchat/AAAAAEXJwtzlr88N0GsaGw"><img src="~/images/socials/Telegram.png" alt="Telegram Group" style="width:100%"></a>
-            </div>
-            <div class="col-sm-12 col-md-4 SocialMedia">
-                <a href="https://instagram.com/forex_masters_official?igshid=1uea2dbc7uai3"><img src="~/images/socials/Insta.jpg" alt="Instagram Page" style="width:100%"></a>
+    <div class="container">
+        <div id="Socials" class="mb-3 mt-3">
+            <h1 class="font-weight-bold">Connect With Us</h1>
+            <div class="row">
+                <div class="col-sm-12 col-md-4 SocialMedia">
+                    <a href="https://chat.whatsapp.com/DJC8Jy4i4Yw8oSC4Ov5HSZ"><img src="~/images/socials/WhatsAppGroup.jpg" alt="WhatsApp Group Chat" style="width:100%"></a>
+                </div>
+                <div class="col-sm-12 col-md-4 SocialMedia">
+                    <a href=" https://t.me/joinchat/AAAAAEXJwtzlr88N0GsaGw"><img src="~/images/socials/Telegram.png" alt="Telegram Group" style="width:100%"></a>
+                </div>
+                <div class="col-sm-12 col-md-4 SocialMedia">
+                    <a href="https://instagram.com/forex_masters_official?igshid=1uea2dbc7uai3"><img src="~/images/socials/Insta.jpg" alt="Instagram Page" style="width:100%"></a>
+                </div>
             </div>
         </div>
     </div>
-
     <div id="visionStatement" class="vsc" style="height: 100vh;">
         <div style="margin-top: 20%; margin-bottom: 20%;">
             <h1 class="font-weight-bold">Vision Statement</h1>
@@ -178,70 +178,71 @@
         </div>
     </div>
 
-    <div id="Brokers">
-        <h1 class="text-warning font-weight-bold">Recommended brokers</h1>
-        <p>
-            <div class="row">
-                <div class="column">
-                    <img src="~/images/brokers/Deriv.jpg" alt="Deriv" style="width:100%">
-                </div>
-                <div class="column">
-                    <img src="~/images/brokers/Exness.jpg" alt="Exness" style="width:100%">
-                </div>
-                <div class="column">
-                    <img src="~/images/brokers/VeracityMarkets.jpg" alt="VeracityMarkets" style="width:100%">
-                </div>
-                <div class="column">
-                    <img src="~/images/brokers/XMGlobal.jpg" alt="XMGlobal" style="width:100%">
-                </div>
-            </div>
-    </div>
-
-    <div id="Team" class="mb-5">
-        <h1 class="font-weight-bold mb-4">Our Forex Masters team</h1>
-        <div class="row">
-            <div class="col-sm-12 col-md-6 flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img class="card-img-top" src="~/images/team/Ashley.jpg" alt="Ashley K Masangano" style="width: 50%;">
+    <div class="container">
+        <div id="Brokers">
+            <h1 class="text-warning font-weight-bold">Recommended brokers</h1>
+            <p>
+                <div class="row">
+                    <div class="column">
+                        <img src="~/images/brokers/Deriv.jpg" alt="Deriv" style="width:100%">
                     </div>
-                    <div class="flip-card-back glow">
-                        <div id="content">
-                            <h3>Ashley K Masangano</h3>
-                            <p class="card-text text-white">
-                                (Founder and CEO Harare branch)<br />
-                                | 2 Years experience in forex trading
-                                | Entrepreneur
-                                | Business minded | Always open for new ideas
-                                | Works towards business growth and Networking
-                                | Determined to push to higher ambitions
-                                | quickly adapts to changes |
-                            </p>
+                    <div class="column">
+                        <img src="~/images/brokers/Exness.jpg" alt="Exness" style="width:100%">
+                    </div>
+                    <div class="column">
+                        <img src="~/images/brokers/VeracityMarkets.jpg" alt="VeracityMarkets" style="width:100%">
+                    </div>
+                    <div class="column">
+                        <img src="~/images/brokers/XMGlobal.jpg" alt="XMGlobal" style="width:100%">
+                    </div>
+                </div>
+        </div>
+
+        <div id="Team" class="mb-5">
+            <h1 class="font-weight-bold mb-4">Our Forex Masters team</h1>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img class="card-img-top" src="~/images/team/Ashley.jpg" alt="Ashley K Masangano" style="width: 50%;">
+                        </div>
+                        <div class="flip-card-back glow">
+                            <div id="content">
+                                <h3>Ashley K Masangano</h3>
+                                <p class="card-text text-white">
+                                    (Founder and CEO Harare branch)<br />
+                                    | 2 Years experience in forex trading
+                                    | Entrepreneur
+                                    | Business minded | Always open for new ideas
+                                    | Works towards business growth and Networking
+                                    | Determined to push to higher ambitions
+                                    | quickly adapts to changes |
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-6 flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img class="card-img-top" src="~/images/team/Tumelo.jpg" alt="Tumelo Mpatse" style="width: 50%;">
-                    </div>
-                    <div class="flip-card-back glow">
-                        <div id="content">
-                            <h3>Tumelo Mpatse</h3>
-                            <p class="card-text text-white">
-                                (Co-founder and CEO Bloemfontein branch SA)<br />
-                                | 1 year Experience with trading
-                                | Swinger and scalp Master
-                                | Believes in Consistency
-                                | Acturial scientist |
-                                "Act like you know nothing and you will learn a lot " -Astro
-                            </p>
+                <div class="col-sm-12 col-md-6 flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img class="card-img-top" src="~/images/team/Tumelo.jpg" alt="Tumelo Mpatse" style="width: 50%;">
+                        </div>
+                        <div class="flip-card-back glow">
+                            <div id="content">
+                                <h3>Tumelo Mpatse</h3>
+                                <p class="card-text text-white">
+                                    (Co-founder and CEO Bloemfontein branch SA)<br />
+                                    | 1 year Experience with trading
+                                    | Swinger and scalp Master
+                                    | Believes in Consistency
+                                    | Acturial scientist |
+                                    "Act like you know nothing and you will learn a lot " -Astro
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
