@@ -15,6 +15,7 @@
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
+    <link asp-href-include="lib/font-awesome/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -24,7 +25,7 @@
                 <!--Navbar Brand-->
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <h3 class="text-light">
-                        <img src="~/images/logos/ForexMasters_Logo.png" width="60px;" />
+                        <img src="~/images/logos/ForexMasters_Logo.png" width="60" />
                     </h3>
                 </a>
                 <!--Hamburger menu-->
@@ -42,17 +43,20 @@
                             <a class="nav-link" asp-controller="Home" asp-action="Signals">Signals</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Resources">Resources</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Disclaimer">Disclaimer</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div>
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
@@ -65,14 +69,17 @@
             <!-- Grid row -->
             <div class="row">
                 <div class="contact col-sm-12 col-md-4 mx-auto mb-4">
+                    <hr class="bg-light" />
                     <h6><i class="fa fa-envelope" aria-hidden="true"></i> Email us on:</h6>
                     <p>
-                        Ashleymasangano@gmail.com<br />
-                        Kudzaisheashley@gmail.com
+                        <a href="mailto:support@forexmasters-fx.com" class="text-white">support@forexmasters-fx.com</a>
+                        <br />
+                        <a href="mailto:info@forexmasters-fx.com" class="text-white">info@forexmasters-fx.com</a>
                     </p>
                 </div>
                 <br />
                 <div class="contact col-sm-12 col-md-4 mx-auto mb-4">
+                    <hr class="bg-light" />
                     <h6><i class="fa fa-phone-alt" aria-hidden="true"></i> Call/WhatsApp:</h6>
                     <p>
                         +263 71 761 9529<br />
@@ -81,6 +88,7 @@
                 </div>
                 <br />
                 <div class="contact col-sm-12 col-md-4 mx-auto mb-4">
+                    <hr class="bg-light" />
                     <h6><i class="fa fa-map-marker" aria-hidden="true"></i> Location:</h6>
                     <p>
                         Harare, Zimbabwe<br />
