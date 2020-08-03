@@ -15,7 +15,7 @@ namespace ForexMasters_site.Controllers
             return View();
         }
 
-        public IActionResult Services()
+        public IActionResult Signals()
         {
             return View();
         }
