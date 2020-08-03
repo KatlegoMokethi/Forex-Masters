@@ -19,11 +19,16 @@ namespace ForexMasters_site.Controllers
         {
             return View();
         }
+        public IActionResult Resources()
+        {
+            return View();
+        }
+
         public IActionResult Contact()
         {
             return View();
         }
-        public IActionResult Privacy()
+        public IActionResult Disclaimer()
         {
             return View();
         }
