@@ -23,7 +23,14 @@ namespace ForexMasters_site.Controllers
         {
             return View();
         }
-
+        public IActionResult Payments()
+        {
+            return View();
+        }
+        public IActionResult Services()
+        {
+            return View();
+        }
         public IActionResult Contact()
         {
             return View();
