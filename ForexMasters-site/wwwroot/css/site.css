@@ -90,6 +90,12 @@ li{
     background-size: 100%;
 }
 
+#JoinUs {
+    background-image: url('../images/JoinUs.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
    .vsc {
      color: black;
  }
