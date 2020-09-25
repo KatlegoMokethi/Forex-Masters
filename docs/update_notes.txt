@@ -1,0 +1,48 @@
+[Absolute Hosting will install SSL Certificate]
+*Re-write rules to redirect to https
+
+-Create User registration and management
+-Add links to Facebook page & YouTube Channel
+*https://www.facebook.com/groups/656993274944015/?ref=share
+*https://www.youtube.com/channel/UCUPVm5S5r5-5srAAm70P2Zw?view_as=subscriber
+
+When user access the portal:
+-Display a welcoming message: Welcome to Forex Masters Master Class [Name]
+*If appropriate, include the user's image in the background
+
+Admin role: [admin@forexmasters-fx.com, Ashley0574!]
+-Register users.
+-Modify users' details and delete users.
+-Grant users access in the site.
+-Add and delete presentation videos.
+-Add and delete presentation documents.
+-Change password of videos.
+*Each presentation should be in its own topic-folder.
+
+Student role:
+-Change login password.
+-Access video contents.
+
+User details:
+-UserID
+-Name
+-Surname
+-Country
+-Email address
+-Password
+-Status (Activated/Deactivated)
+
+Presentation details:
+-PresentationID
+-Name
+-Category
+-Password
+-Video
+	-VideoID
+	-Video name
+	-Video path
+-Documents 
+	Document:
+		-DocumentID
+		-file name
+		-file path
