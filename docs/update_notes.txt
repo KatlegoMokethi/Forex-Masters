@@ -11,38 +11,51 @@ When user access the portal:
 *If appropriate, include the user's image in the background
 
 Admin role: [admin@forexmasters-fx.com, Ashley0574!]
--Register users.
+-Assign roles.
 -Modify users' details and delete users.
 -Grant users access in the site.
--Add and delete presentation videos.
--Add and delete presentation documents.
--Change password of videos.
-*Each presentation should be in its own topic-folder.
+-Add and delete topic videos.
+-Add and delete topic documents.
+-Change password of topics.
+*Each topic should be in its own topic-folder.
 
 Student role:
+-Register.
 -Change login password.
 -Access video contents.
 
-User details:
--UserID
--Name
--Surname
--Country
--Email address
--Password
--Status (Activated/Deactivated)
+USER:
+	-Name
+	-Surname
+	-Country
+	-Email address
+	-Password
+	-PicturePath
+	-Balance
+	-Approved
 
-Presentation details:
--PresentationID
--Name
--Category
--Password
--Video
-	-VideoID
-	-Video name
-	-Video path
--Documents 
-	Document:
-		-DocumentID
-		-file name
-		-file path
+DOCUMENT:
+	-Name
+	-Path
+		
+VIDEO:
+	-Name
+	-Description
+	-Path
+
+Category:
+	-Name
+	
+TOPIC:
+	-Name
+	-Description
+	-Category
+	-Password
+	-Videos
+	-Documents 
+	
+FLASHCARD:
+	-Name
+	-Date
+	-PicturePath
+	
