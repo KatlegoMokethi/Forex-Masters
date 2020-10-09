@@ -2,5 +2,5 @@
 
 namespace ForexMasters_site.Models.Data
 {
-    public interface ICategoryRepository : IRepositoryBase<Category> { }
+    public interface IFlashcardRepository : IRepositoryBase<Flashcard> { }
 }
