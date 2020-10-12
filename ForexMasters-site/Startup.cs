@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,8 +23,13 @@ namespace ForexMasters_site
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
+
             services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+               .AddEntityFrameworkStores<AppDbContext>()
+               .AddDefaultTokenProviders();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
