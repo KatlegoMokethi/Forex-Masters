@@ -55,17 +55,6 @@ namespace ForexMasters_site.Controllers
                         return Redirect("/Masterclass/Index");
                     }
                 }
-                //IdentityUser user =
-                //await _userManager.FindByEmailAsync(loginModel.Email);
-                //if (user != null)
-                //{
-                //    var result = await _signInManager.PasswordSignInAsync(user,
-                //    loginModel.Password, false, false);
-                //    if (result.Succeeded)
-                //    {
-                //        return Redirect("/Masterclass/Index");
-                //    }
-                //}
             }
             ModelState.AddModelError("", "Invalid email or password");
             return View(loginModel);
@@ -110,7 +99,7 @@ namespace ForexMasters_site.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
         [AllowAnonymous]
         public IActionResult AccessDenied()
