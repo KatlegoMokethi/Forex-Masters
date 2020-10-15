@@ -1,8 +1,13 @@
-﻿namespace ForexMasters_site.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ForexMasters_site.Models.Entities
 {
     public class User
     {
-        public string UserID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Country { get; set; }
