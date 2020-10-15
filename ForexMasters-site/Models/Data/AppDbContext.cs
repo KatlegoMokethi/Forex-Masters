@@ -12,11 +12,12 @@ namespace ForexMasters_site.Models.Data
     public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        DbSet<Video> videos { get; set; }
-        DbSet<Document> documents { get; set; }
-        DbSet<Topic> topics { get; set; }
-        DbSet<Category> categories { get; set; }
-        DbSet<Flashcard> flashcards { get; set; }
+        public DbSet<Video> videos { get; set; }
+        public DbSet<Document> documents { get; set; }
+        public DbSet<Topic> topics { get; set; }
+        public DbSet<Category> categories { get; set; }
+        public DbSet<Flashcard> flashcards { get; set; }
+        public DbSet<User> users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +26,7 @@ namespace ForexMasters_site.Models.Data
             modelBuilder.Entity<Topic>().ToTable("Topic");
             modelBuilder.Entity<Category>().ToTable("Category");
             modelBuilder.Entity<Flashcard>().ToTable("Flashcard");
+            modelBuilder.Entity<User>().ToTable("User");
             base.OnModelCreating(modelBuilder);
         }
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,
