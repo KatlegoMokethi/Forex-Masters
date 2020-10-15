@@ -53,7 +53,7 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-link">|</li>
+                            <li class="nav-link">-</li>
                             <li class="nav-link">Hello, @User.Identity.Name</li>
                             @if (User.IsInRole("Admin"))
                             {
@@ -67,7 +67,7 @@
                             }
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
-                                    <button class="btn btn-link nav-link" type="submit">Log Out</button>
+                                    <button class="btn btn-link nav-link" type="submit">Logout</button>
                                 </form>
                             </li>
                         }
