@@ -7,6 +7,7 @@
         private ICategoryRepository _category;
         private IDocumentRepository _document;
         private IFlashcardRepository _flashcard;
+        private IUserRepository _userRepository;
 
         public RepositoryWrapper(AppDbContext appDbContext)
         {
@@ -61,6 +62,19 @@
                 }
 
                 return _flashcard;
+            }
+        }
+
+        public IUserRepository User
+        {
+            get
+            {
+                if (_userRepository == null)
+                {
+                    _userRepository = new EFUserRepository(_appDbContext);
+                }
+
+                return _userRepository;
             }
         }
     }

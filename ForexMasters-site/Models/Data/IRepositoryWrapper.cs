@@ -6,5 +6,6 @@
         ICategoryRepository Category { get; }
         IDocumentRepository Document { get; }
         IFlashcardRepository Flashcard { get; }
+        IUserRepository User { get; }
     }
 }
