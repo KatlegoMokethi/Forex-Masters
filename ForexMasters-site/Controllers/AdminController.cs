@@ -1,4 +1,5 @@
-﻿using ForexMasters_site.Models.ViewModels;
+﻿using ForexMasters_site.Models.Data;
+using ForexMasters_site.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,16 +14,19 @@ namespace ForexMasters_site.Controllers
         private IUserValidator<IdentityUser> _userValidator;
         private IPasswordValidator<IdentityUser> _passwordValidator;
         private IPasswordHasher<IdentityUser> _passwordHasher;
+        private IRepositoryWrapper _repositoryWrapper;
 
         public AdminController(UserManager<IdentityUser> userManager,
             IUserValidator<IdentityUser> userValidator,
             IPasswordValidator<IdentityUser> passValidator,
-            IPasswordHasher<IdentityUser> passwordHasher)
+            IPasswordHasher<IdentityUser> passwordHasher,
+            IRepositoryWrapper repositoryWrapper)
         {
             _userManager = userManager;
             _userValidator = userValidator;
             _passwordValidator = passValidator;
             _passwordHasher = passwordHasher;
+            _repositoryWrapper = _repositoryWrapper;
         }
 
         public ViewResult Index()
@@ -97,15 +101,13 @@ namespace ForexMasters_site.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, string email,
-        string password)
+        public async Task<IActionResult> Edit(string id, string email, string password)
         {
             IdentityUser user = await _userManager.FindByIdAsync(id);
             if (user != null)
             {
                 user.Email = email;
-                IdentityResult validEmail
-                    = await _userValidator.ValidateAsync(_userManager, user);
+                IdentityResult validEmail = await _userValidator.ValidateAsync(_userManager, user);
 
                 if (!validEmail.Succeeded)
                 {
@@ -134,6 +136,8 @@ namespace ForexMasters_site.Controllers
 
                     if (result.Succeeded)
                     {
+                        //Update user details...
+                        
                         return RedirectToAction("Index");
                     }
                     else
