@@ -33,7 +33,7 @@ namespace ForexMasters_site.Models.ViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        public string Picture { get; set; }
+        public byte[] PictureFile { get; set; }
 
         [Required(ErrorMessage = "Enter Password")]
         [DataType(DataType.Password)]
