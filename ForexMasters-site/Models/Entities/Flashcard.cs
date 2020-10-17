@@ -18,7 +18,9 @@ namespace ForexMasters_site.Models.Entities
 
         [Required(ErrorMessage = "Please specify flashcard date")]
         public DateTime Date { get; set; }
-        
-        public string PicturePath { get; set; }
+
+        public byte[] PictureFile { get; set; }
+
+        public string PictureURL { get; set; }
     }
 }
