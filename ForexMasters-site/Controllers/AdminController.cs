@@ -1,4 +1,5 @@
 ﻿using ForexMasters_site.Models.Data;
+using ForexMasters_site.Models.Entities;
 using ForexMasters_site.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -28,6 +29,18 @@ namespace ForexMasters_site.Controllers
             _passwordHasher = passwordHasher;
             _repositoryWrapper = repositoryWrapper;
         }
+        //CMS
+        //--Flashcard
+        public IActionResult CreateFlashcard()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateFlashcard(Flashcard flashcard)
+        {
+            return View();
+        }
+        //:CMS
 
         public ViewResult Index()
         {

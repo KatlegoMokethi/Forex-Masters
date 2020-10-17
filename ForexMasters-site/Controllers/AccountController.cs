@@ -112,7 +112,7 @@ namespace ForexMasters_site.Controllers
                         Surname = registerModel.Surname,
                         Country = registerModel.Country,
                         Email = registerModel.Email,
-                        Picture = registerModel.Picture,
+                        PictureFile = registerModel.PictureFile,
                         Password = registerModel.Password
                     };
 
