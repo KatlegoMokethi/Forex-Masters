@@ -26,7 +26,7 @@ namespace ForexMasters_site.Controllers
             _userValidator = userValidator;
             _passwordValidator = passValidator;
             _passwordHasher = passwordHasher;
-            _repositoryWrapper = _repositoryWrapper;
+            _repositoryWrapper = repositoryWrapper;
         }
 
         public ViewResult Index()
