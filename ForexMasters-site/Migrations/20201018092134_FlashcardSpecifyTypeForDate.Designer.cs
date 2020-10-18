@@ -4,14 +4,16 @@ using ForexMasters_site.Models.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForexMasters_site.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201018092134_FlashcardSpecifyTypeForDate")]
+    partial class FlashcardSpecifyTypeForDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +64,11 @@ namespace ForexMasters_site.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<byte[]>("PictureFile")
+                        .IsRequired();
 
                     b.Property<string>("PictureURL");
 
