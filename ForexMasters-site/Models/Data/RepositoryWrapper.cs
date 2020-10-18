@@ -8,6 +8,7 @@
         private IDocumentRepository _document;
         private IFlashcardRepository _flashcard;
         private IUserRepository _userRepository;
+        private ITopicRepository _topicRepository;
 
         public RepositoryWrapper(AppDbContext appDbContext)
         {
@@ -75,6 +76,19 @@
                 }
 
                 return _userRepository;
+            }
+        }
+
+        public IUserRepository Topic
+        {
+            get
+            {
+                if (_topicRepository == null)
+                {
+                    _topicRepository = new EFTopicRepository(_appDbContext);
+                }
+
+                return _topicRepository;
             }
         }
     }
