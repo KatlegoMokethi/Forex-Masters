@@ -4,12 +4,12 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="container text-white">
+<div class="container text-white pt-5">
     <h1>Register</h1>
-    <hr />
+    <hr class="bg-warning" />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Register">
+            <form asp-action="Register" asp-controller="Account" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
@@ -22,9 +22,13 @@
                     <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Country" class="control-label"></label>
-                    <input asp-for="Country" class="form-control" />
-                    <span asp-validation-for="Country" class="text-danger"></span>
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div>
+                    <label class="control-label">Profile Photo</label>
+                    <input asp-for="PictureFile" type="file" name="file" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Email" class="control-label"></label>
@@ -32,9 +36,9 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Upload profile photo:</label>
-                    <input asp-for="PictureFile" type="file" name="file" />
-                    <span asp-validation-for="PictureFile" class="text-danger"></span>
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
@@ -47,7 +51,7 @@
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Register Account" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </form>
         </div>
