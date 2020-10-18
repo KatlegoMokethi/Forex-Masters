@@ -2,9 +2,11 @@
 using ForexMasters_site.Models.Entities;
 using ForexMasters_site.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace ForexMasters_site.Controllers
@@ -57,6 +59,7 @@ namespace ForexMasters_site.Controllers
                     loginModel.Password, false, false);
                     if (result.Succeeded)
                     {
+                        ViewBag.User = _repositoryWrapper.User.FindByCondition(u => u.Email == user.Email);
                         return Redirect("/Masterclass/Index");
                     }
                 }
@@ -73,17 +76,12 @@ namespace ForexMasters_site.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(RegisterModel registerModel)
+        public async Task<IActionResult> Register(RegisterModel registerModel, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                if (await _roleManager.FindByNameAsync(_role) == null)
-                {
-                    await _roleManager.CreateAsync(new IdentityRole(_role));
-                }
-
                 //Check if user already exists in the database...IEnumerable<User>
-                //var Users = _repositoryWrapper.User.FindByCondition(u => u.Email == registerModel.Email);
+                //var Users = 
                 //if (Users != null)
                 //{
                 //    ModelState.AddModelError("", "Email Already Exits!");
@@ -94,8 +92,15 @@ namespace ForexMasters_site.Controllers
                 var user = new IdentityUser
                 {
                     UserName = registerModel.Name,
-                    Email = registerModel.Email
+                    Email = registerModel.Email,
+                    PhoneNumber = registerModel.PhoneNumber
                 };
+
+                //Create student role
+                if (await _roleManager.FindByNameAsync(_role) == null)
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(_role));
+                }
 
                 //Create new user
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
@@ -105,6 +110,20 @@ namespace ForexMasters_site.Controllers
                     //Add default "Student" role to the user
                     await _userManager.AddToRoleAsync(user, _role);
 
+                    //Process user image
+                    string extension = file.FileName.Substring(file.FileName.LastIndexOf('.'));
+
+                    //Get picture name
+                    var PictureName = $"{file.FileName}{extension}";
+
+                    //Set picture URL
+                    var PictureURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\profiles", PictureName);
+                    using (var stream = new FileStream(PictureURL, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    //:Process user image
+
                     //Record the user details to User model
                     User newUser = new User()
                     {
@@ -112,8 +131,8 @@ namespace ForexMasters_site.Controllers
                         Surname = registerModel.Surname,
                         Country = registerModel.Country,
                         Email = registerModel.Email,
-                        PictureFile = registerModel.PictureFile,
-                        Password = registerModel.Password
+                        PhoneNumber = registerModel.PhoneNumber,
+                        PictureURL = "/images/profiles/" + PictureName //Get picture URL
                     };
 
                     //Save new user to the database
@@ -125,7 +144,7 @@ namespace ForexMasters_site.Controllers
     }
                 else
                 {
-                    ModelState.AddModelError("", "Unable to register new user");
+                    ModelState.AddModelError("", $"Unable to register new user: {result.Errors.ToString()}");
                 }
             }
             return View(registerModel);
