@@ -2,8 +2,10 @@
 using ForexMasters_site.Models.Entities;
 using ForexMasters_site.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace ForexMasters_site.Controllers
@@ -30,18 +32,53 @@ namespace ForexMasters_site.Controllers
             _repositoryWrapper = repositoryWrapper;
         }
         //CMS
-        //--Flashcard
+        //Flashcard
         public IActionResult CreateFlashcard()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult CreateFlashcard(Flashcard flashcard)
+        public IActionResult CreateFlashcard(FlashcardViewModel flashcardModel, IFormFile file)
         {
+            //Check if picture is selected
+            if (file == null)
+            {
+                ModelState.AddModelError("", "Error: Picture is not selected! Flashcard could not be created!");
+                return View();
+            }
+
+            if (ModelState.IsValid)
+            {
+                //Set picture URL
+                var PictureURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\flashcards", file.FileName);
+
+                //Copy file to server/disk
+                using (var stream = new FileStream(PictureURL, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                //Record flashcard details
+                Flashcard flashcard = new Flashcard()
+                {
+                    Name = flashcardModel.Name,
+                    Date = flashcardModel.Date,
+                    PictureURL = "/images/flashcards/" + file.FileName //Get picture URL
+                };
+
+                //Save new flashcard to the database
+                _repositoryWrapper.Flashcard.Create(flashcard);
+                _repositoryWrapper.Flashcard.Save();
+
+                //Done
+                return Redirect("/Masterclass/Index");
+            }
+
+            ModelState.AddModelError("", "Error: Flashcard could not be created!");
             return View();
         }
+        //:Flashcard
         //:CMS
-
         public ViewResult Index()
         {
             return View(_userManager.Users);
@@ -150,7 +187,7 @@ namespace ForexMasters_site.Controllers
                     if (result.Succeeded)
                     {
                         //Update user details...
-                        
+
                         return RedirectToAction("Index");
                     }
                     else
