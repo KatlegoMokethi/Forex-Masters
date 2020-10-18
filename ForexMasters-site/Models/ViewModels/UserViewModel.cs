@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -21,19 +22,26 @@ namespace ForexMasters_site.Models.ViewModels
 
     public class RegisterModel
     {
-        [Required(ErrorMessage = "Enter a name")]
+        [Required(ErrorMessage = "User name is required!")]
         public string Name { get; set; }
         
         public string Surname { get; set; }
+
+        [Required(ErrorMessage = "Phone number is required!")]
+        [DisplayName("Phone Number")]
+        [Phone]
+        public string PhoneNumber { get; set; }
         
-        public string Country { get; set; }
-        
-        [Required(ErrorMessage = "Enter E-mail address")]
+        [Required(ErrorMessage = "E-mail address is required!")]
         [DisplayName("E-mail")]
         [EmailAddress]
         public string Email { get; set; }
 
-        public byte[] PictureFile { get; set; }
+        [Required(ErrorMessage = "Country of origin is required!")]
+        public string Country { get; set; }
+
+        [FileExtensions(Extensions = "jpg,jpeg,png")]
+        public IFormFile PictureFile { get; set; }
 
         [Required(ErrorMessage = "Enter Password")]
         [DataType(DataType.Password)]
