@@ -12,9 +12,9 @@ namespace ForexMasters_site.Models.Entities
         public string Surname { get; set; }
         public string Country { get; set; }
         public string Email { get; set; }
-        public byte[] PictureFile { get; set; }
+        public string PhoneNumber { get; set; }
         public string PictureURL { get; set; }
-        public string Password { get; set; }
+        [Column(TypeName ="money")]
         public decimal Balance { get; set; }
         public bool isActive { get; set; }
 
