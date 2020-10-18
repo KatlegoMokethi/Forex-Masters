@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ForexMasters_site.Models.Entities
 {
@@ -13,13 +10,10 @@ namespace ForexMasters_site.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FlashcardID { get; set; }
 
-        [Required(ErrorMessage = "Please specify flashcard name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please specify flashcard date")]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-
-        public byte[] PictureFile { get; set; }
 
         public string PictureURL { get; set; }
     }
