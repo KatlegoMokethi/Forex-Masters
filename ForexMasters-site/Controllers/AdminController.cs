@@ -5,7 +5,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ForexMasters_site.Controllers
@@ -78,6 +82,131 @@ namespace ForexMasters_site.Controllers
             return View();
         }
         //:Flashcard
+
+        //Category
+        private void PopulateCategoryDDL(object selectedCategory = null)
+        {
+            ViewBag.CategoryID = new SelectList(_repositoryWrapper.Category.FindAll(),
+                "CategoryID", "CategoryName", selectedCategory);
+        }
+        public IActionResult CreateCategory()
+        {
+            PopulateCategoryDDL();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                //Save new category to the database
+                _repositoryWrapper.Category.Create(category);
+                _repositoryWrapper.Category.Save();
+
+                //Done
+                return Redirect("/Masterclass/Index");
+            }
+
+            ModelState.AddModelError("", "Error: Category could not be created!");
+            return View();
+        }
+        //:Category
+
+        //Topic
+        public IActionResult CreateTopic()
+        {
+            PopulateCategoryDDL();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateTopic(TopicViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //Record topic details
+                Topic topic = new Topic()
+                {
+                    TopicID = $"{Guid.NewGuid().ToString()}_{DateTime.Now.Ticks}",
+                    Name = model.TopicName,
+                    Description = model.TopicDescription,
+                    CategoryID = model.CategoryID,
+                    Password = model.ConfirmPassword
+                };
+
+                //Topic Vidos:
+                if (model.Videos != null & model.Videos.Count() > 0)
+                {
+                    foreach (IFormFile video in model.Videos)
+                    {
+                        //Set video name
+                        string VideoName = $"{video.FileName}_{Guid.NewGuid().ToString()}";
+
+                        //Set video URL
+                        string VideoURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\videos", VideoName);
+
+                        //Copy file to server/disk
+                        video.CopyTo(new FileStream(VideoURL, FileMode.Create));
+
+                        //Record video details
+                        Video videomodel = new Video()
+                        {
+                            Name = VideoName,
+                            FileURL = "/videos/" + VideoName, //Get video URL
+                            TopicID = topic.TopicID
+                        };
+
+                        //Save new video to the database
+                        _repositoryWrapper.Video.Create(videomodel);
+                        _repositoryWrapper.Video.Save();
+
+                        //Add video to the topic
+                        topic.Videos.Add(videomodel);
+                    }
+                }
+
+                //Topic Documents:
+                if (model.Documents != null & model.Documents.Count() > 0)
+                {
+                    foreach (IFormFile document in model.Documents)
+                    {
+                        //Set document name
+                        string DocumentName = $"{document.FileName}_{Guid.NewGuid().ToString()}";
+
+                        //Set document URL
+                        string DocumentURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\documents", DocumentName);
+
+                        //Copy file to server/disk
+                        document.CopyTo(new FileStream(DocumentURL, FileMode.Create));
+
+                        //Record document details
+                        Document documentmodel = new Document()
+                        {
+                            Name = DocumentName,
+                            FileURL = "/documents/" + DocumentName, //Get document URL
+                            TopicID = topic.TopicID
+                        };
+
+                        //Save new document to the database
+                        _repositoryWrapper.Document.Create(documentmodel);
+                        _repositoryWrapper.Document.Save();
+
+                        //Add document to the topic
+                        topic.Documents.Add(documentmodel);
+                    }
+                }
+                //Save new category to the database
+                _repositoryWrapper.Topic.Create(topic);
+                _repositoryWrapper.Topic.Save();
+
+                //Done
+                return Redirect("/Masterclass/Index");
+            }
+
+            ModelState.AddModelError("", "Error: Topic could not be created!");
+            return View();
+        }
+        //:Topic
+
         //:CMS
         public ViewResult Index()
         {
