@@ -8,14 +8,8 @@ namespace ForexMasters_site.Models.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VideoID { get; set; }
-
-        public string VideoName { get; set; }
-
-        public byte[] VideoFile { get; set; }
-
-        public string VideoURL { get; set; }
-
-        public int TopicID { get; set; }
-        public Topic Topic { get; set; }
+        public string Name { get; set; }
+        public string FileURL { get; set; }
+        public string TopicID { get; set; }
     }
 }

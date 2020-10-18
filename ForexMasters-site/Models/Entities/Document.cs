@@ -8,14 +8,8 @@ namespace ForexMasters_site.Models.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DocumentID { get; set; }
-
-        public string FileName { get; set; }
-
-        public byte[] DocumentFile { get; set; }
-
+        public string Name { get; set; }
         public string FileURL { get; set; }
-
-        public int TopicID { get; set; }
-        public Topic Topic { get; set; }
+        public string TopicID { get; set; }
     }
 }
