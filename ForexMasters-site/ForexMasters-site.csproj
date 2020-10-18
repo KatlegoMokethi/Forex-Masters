@@ -6,6 +6,11 @@
     <RootNamespace>ForexMasters_site</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20201018090120_Changes.cs" />
+    <Compile Remove="Migrations\20201018090120_Changes.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
