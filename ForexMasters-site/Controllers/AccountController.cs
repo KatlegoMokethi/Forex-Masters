@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ForexMasters_site.Controllers
@@ -59,8 +60,10 @@ namespace ForexMasters_site.Controllers
                     loginModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        ViewBag.User = _repositoryWrapper.User.FindByCondition(u => u.Email == user.Email);
-                        return Redirect("/Masterclass/Index");
+                        User ActiveUser = _repositoryWrapper.User.FindAll()
+                                                                 .Where(u => u.Email == user.Email)
+                                                                 .FirstOrDefault();
+                        return RedirectToAction("Index", "Masterclass", ActiveUser);
                     }
                 }
             }
@@ -80,14 +83,6 @@ namespace ForexMasters_site.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Check if user already exists in the database...IEnumerable<User>
-                //var Users = 
-                //if (Users != null)
-                //{
-                //    ModelState.AddModelError("", "Email Already Exits!");
-                //    return View(registerModel);
-                //}
-
                 //Assign required user details
                 var user = new IdentityUser
                 {
@@ -110,30 +105,31 @@ namespace ForexMasters_site.Controllers
                     //Add default "Student" role to the user
                     await _userManager.AddToRoleAsync(user, _role);
 
+                    User newUser = new User();
                     //Process user image
-                    string extension = file.FileName.Substring(file.FileName.LastIndexOf('.'));
-
-                    //Get picture name
-                    var PictureName = $"{file.FileName}{extension}";
-
-                    //Set picture URL
-                    var PictureURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\profiles", PictureName);
-                    using (var stream = new FileStream(PictureURL, FileMode.Create))
+                    if (file != null)
                     {
-                        await file.CopyToAsync(stream);
+                        //Get picture name
+                        var PictureName = $"{file.FileName}";
+
+                        //Set picture URL
+                        var PictureURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images\profiles", PictureName);
+                        using (var stream = new FileStream(PictureURL, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+                        //:Process user image
+
+                        //Record the user picture url
+                        newUser.PictureURL = "/images/profiles/" + PictureName; //Get picture URL
                     }
-                    //:Process user image
 
                     //Record the user details to User model
-                    User newUser = new User()
-                    {
-                        Name = registerModel.Name,
-                        Surname = registerModel.Surname,
-                        Country = registerModel.Country,
-                        Email = registerModel.Email,
-                        PhoneNumber = registerModel.PhoneNumber,
-                        PictureURL = "/images/profiles/" + PictureName //Get picture URL
-                    };
+                    newUser.Name = registerModel.Name;
+                    newUser.Surname = registerModel.Surname;
+                    newUser.Country = registerModel.Country;
+                    newUser.Email = registerModel.Email;
+                    newUser.PhoneNumber = registerModel.PhoneNumber;
 
                     //Save new user to the database
                     _repositoryWrapper.User.Create(newUser);
@@ -141,7 +137,7 @@ namespace ForexMasters_site.Controllers
 
                     //Go Login
                     return RedirectToAction("Login", "Account");
-    }
+                }
                 else
                 {
                     ModelState.AddModelError("", $"Unable to register new user: {result.Errors.ToString()}");
@@ -151,15 +147,15 @@ namespace ForexMasters_site.Controllers
         }
 
         [HttpPost]
-public async Task<IActionResult> Logout()
-{
-    await _signInManager.SignOutAsync();
-    return RedirectToAction("Index", "Home");
-}
-[AllowAnonymous]
-public IActionResult AccessDenied()
-{
-    return View();
-}
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
