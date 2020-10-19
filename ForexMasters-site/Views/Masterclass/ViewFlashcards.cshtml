@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Flashcard>
+
+@{
+    ViewData["Title"] = "ViewFlashcards";
+}
+
+<div class="container text-white">
+    <h1>Flashcards</h1>
+    <div class="container">
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                @foreach (var flashcard in Model)
+                {
+                    <div class="col text-center btn-outline-primary">
+                        <img class="pt-4" src="@flashcard.PictureURL" width="200" height="200" alt="@flashcard.Name">
+                        <h5 class="pt-2 text-uppercase" style="font-family: Impact;">@flashcard.Name</h5>
+                        <p class="text-uppercase">
+                            @flashcard.Date.Day/@flashcard.Date.Month/@flashcard.Date.Year
+                        </p>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-center">No flashcards posted as yet!</p>
+        }
+    </div>
+</div>
