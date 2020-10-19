@@ -20,9 +20,12 @@ namespace ForexMasters_site.Models.ViewModels
 
         [Required(ErrorMessage = "A topic must have at least one presentation video!")]
         [DisplayName("Video(s)")]
+        //[FileExtensions(Extensions = "mp4", ErrorMessage = "Only .mp4 format is accepted!")]
         public List<IFormFile> Videos { get; set; }
 
+        [Required(ErrorMessage = "A topic must have at least one presentation document!")]
         [DisplayName("Document(s)")]
+        //[FileExtensions(Extensions = "pptx,pdf", ErrorMessage = "Only .pptx and .pdf formats are accepted!")]
         public List<IFormFile> Documents { get; set; }
 
         [Required(ErrorMessage = "Please enter a password for this topic")]
