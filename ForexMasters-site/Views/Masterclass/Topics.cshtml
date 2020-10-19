@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Topic>
+
+@{
+    ViewData["Title"] = "Topics";
+}
+<!-- TO DO: DONE -->
+<div class="container pb-3">
+    <h1 class="display-4 pb-3 text-primary">Topics</h1>
+    @if (Model.Count() > 0)
+    {
+        @foreach (Topic topic in Model)
+        {
+            <h3>
+                <a asp-controller="Masterclass" asp-action="TopicDetail" asp-route-id="@topic.TopicID">
+                    <span class="fa fa-folder fa-2x" style="color: white;"></span> @topic.Name
+                </a>
+            </h3>
+        }
+    }
+    else
+    {
+        <p class="text-center">No topics available as yet!</p>
+    }
+</div>
