@@ -119,6 +119,7 @@ namespace ForexMasters_site.Controllers
             return View();
         }
         [HttpPost]
+        [RequestFormLimits(MultipartBodyLengthLimit = 209715200)]
         public IActionResult CreateTopic(TopicViewModel model)
         {
             if (ModelState.IsValid)
@@ -133,13 +134,17 @@ namespace ForexMasters_site.Controllers
                     Password = model.ConfirmPassword
                 };
 
+                //Save new topic to the database
+                _repositoryWrapper.Topic.Create(topic);
+                _repositoryWrapper.Topic.Save();
+
                 //Topic Vidos:
                 if (model.Videos != null & model.Videos.Count() > 0)
                 {
                     foreach (IFormFile video in model.Videos)
                     {
                         //Set video name
-                        string VideoName = $"{video.FileName}_{Guid.NewGuid().ToString()}";
+                        string VideoName = $"{video.FileName}";
 
                         //Set video URL
                         string VideoURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\videos", VideoName);
@@ -160,7 +165,7 @@ namespace ForexMasters_site.Controllers
                         _repositoryWrapper.Video.Save();
 
                         //Add video to the topic
-                        topic.Videos.Add(videomodel);
+                        //topic.Videos.Add(videomodel);
                     }
                 }
 
@@ -170,7 +175,7 @@ namespace ForexMasters_site.Controllers
                     foreach (IFormFile document in model.Documents)
                     {
                         //Set document name
-                        string DocumentName = $"{document.FileName}_{Guid.NewGuid().ToString()}";
+                        string DocumentName = $"{document.FileName}";
 
                         //Set document URL
                         string DocumentURL = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\documents", DocumentName);
@@ -191,11 +196,12 @@ namespace ForexMasters_site.Controllers
                         _repositoryWrapper.Document.Save();
 
                         //Add document to the topic
-                        topic.Documents.Add(documentmodel);
+                        //topic.Documents.Add(documentmodel);
                     }
                 }
-                //Save new category to the database
-                _repositoryWrapper.Topic.Create(topic);
+
+                //Save topic changes to the database
+                _repositoryWrapper.Topic.Update(topic);
                 _repositoryWrapper.Topic.Save();
 
                 //Done
@@ -203,6 +209,7 @@ namespace ForexMasters_site.Controllers
             }
 
             ModelState.AddModelError("", "Error: Topic could not be created!");
+            PopulateCategoryDDL();
             return View();
         }
         //:Topic
