@@ -53,7 +53,10 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-link font-weight-bold">Hello, @User.Identity.Name</li>
+                            <li class="nav-link font-weight-bold">Hello,@User.Identity.Name</li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Masterclass" asp-action="Index">Masterclass</a>
+                            </li>
                             @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item dropdown">
@@ -63,7 +66,22 @@
                                         <a class="dropdown-item" asp-controller="RoleAdmin" asp-action="Index">Role Management</a>
                                     </div>
                                 </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Content Management</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="CreateFlashcard">Add Flashcard</a>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="CreateCategory">Add Category</a>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="CreateTopic">Add Topic</a>
+                                    </div>
+                                </li>
                             }
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Content</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-controller="Masterclass" asp-action="ViewFlashcards">Flashcards</a>
+                                    <a class="dropdown-item" asp-controller="Masterclass" asp-action="Courses">Courses</a>
+                                </div>
+                            </li>
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="post">
                                     <button class="btn btn-link nav-link" type="submit">Logout</button>
