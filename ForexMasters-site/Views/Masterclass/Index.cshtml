@@ -1,5 +1,12 @@
-﻿<div class="container text-white pt-5">
+﻿@model User
+<div class="container text-white pt-5">
     <div id="Welcome" class="text-center">
+        <p>
+            @if (@Model != null)
+            {
+                <img src="@Model.PictureURL" alt="@Model.Name" style="width:50%" />
+            }
+        </p>
         <h1>Welcome to Forex Masters Masterclass</h1>
         <br />
         <h3>
