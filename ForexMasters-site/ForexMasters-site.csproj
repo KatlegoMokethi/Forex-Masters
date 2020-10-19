@@ -13,12 +13,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="wwwroot\documents\" />
-    <Folder Include="wwwroot\images\flashcards\" />
-    <Folder Include="wwwroot\images\profiles\" />
-    <Folder Include="wwwroot\videos\" />
-  </ItemGroup>
-
 </Project>
