@@ -79,7 +79,7 @@
             }
         }
 
-        public IUserRepository Topic
+        public ITopicRepository Topic
         {
             get
             {
