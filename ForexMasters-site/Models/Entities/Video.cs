@@ -11,5 +11,6 @@ namespace ForexMasters_site.Models.Entities
         public string Name { get; set; }
         public string FileURL { get; set; }
         public string TopicID { get; set; }
+        public Topic Topic { get; set; }
     }
 }
