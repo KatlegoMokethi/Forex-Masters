@@ -27,6 +27,15 @@ namespace ForexMasters_site.Models.Data
             modelBuilder.Entity<Category>().ToTable("Category");
             modelBuilder.Entity<Flashcard>().ToTable("Flashcard");
             modelBuilder.Entity<User>().ToTable("User");
+
+            modelBuilder.Entity<Video>()
+                        .HasOne(v => v.Topic)
+                        .WithMany(t => t.Videos);
+
+            modelBuilder.Entity<Document>()
+                        .HasOne(d => d.Topic)
+                        .WithMany(t => t.Documents);
+
             base.OnModelCreating(modelBuilder);
         }
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,
