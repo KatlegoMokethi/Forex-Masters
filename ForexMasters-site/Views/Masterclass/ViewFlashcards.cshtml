@@ -12,12 +12,20 @@
             <div class="row">
                 @foreach (var flashcard in Model)
                 {
-                    <div class="col text-center btn-outline-primary">
+                    <div class="col text-center">
                         <img class="pt-4" src="@flashcard.PictureURL" width="200" height="200" alt="@flashcard.Name">
                         <h5 class="pt-2 text-uppercase" style="font-family: Impact;">@flashcard.Name</h5>
                         <p class="text-uppercase">
                             @flashcard.Date.Day/@flashcard.Date.Month/@flashcard.Date.Year
                         </p>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <form asp-action="DeleteFlashcard" asp-controller="Admin" asp-route-id="@flashcard.FlashcardID" method="post">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-minus-circle fa-2x"></i>
+                                </button>
+                            </form>
+                        }
                     </div>
                 }
             </div>
