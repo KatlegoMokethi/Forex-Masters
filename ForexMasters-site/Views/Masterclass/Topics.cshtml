@@ -11,8 +11,8 @@
         @foreach (Topic topic in Model)
         {
             <h3>
-                <a asp-controller="Masterclass" asp-action="TopicDetail" asp-route-id="@topic.TopicID">
-                    <span class="fa fa-folder fa-2x" style="color: white;"></span> @topic.Name
+                <a asp-controller="Masterclass" asp-action="TopicDetail" asp-route-id="@topic.TopicID" class="text-white">
+                    <span class="fa fa-folder" style="color: blue;"></span> @topic.Name
                 </a>
             </h3>
         }
