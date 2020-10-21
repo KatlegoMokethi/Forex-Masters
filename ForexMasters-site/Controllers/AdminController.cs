@@ -251,14 +251,17 @@ namespace ForexMasters_site.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string email)
         {
-            IdentityUser user = await _userManager.FindByIdAsync(id);
+            IdentityUser user = await _userManager.FindByEmailAsync(email);
             if (user != null)
             {
                 IdentityResult result = await _userManager.DeleteAsync(user);
                 if (result.Succeeded)
                 {
+                    User updateUser = _repositoryWrapper.User.FindByCondition(u => u.Email == email).FirstOrDefault();
+                    _repositoryWrapper.User.Delete(updateUser);
+                    _repositoryWrapper.User.Save();
                     return RedirectToAction("Index");
                 }
                 else
@@ -338,6 +341,74 @@ namespace ForexMasters_site.Controllers
             }
             return View(user);
         }
+        //--Edit User--
+        public IActionResult EditUser(string email)
+        {
+            User user = _repositoryWrapper.User.FindByCondition(u => u.Email == email).FirstOrDefault();
+            UsersViewModel model = new UsersViewModel()
+            {
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                IsActive = user.isActive,
+                Balance = user.Balance,
+                PhoneNumber = user.PhoneNumber
+            };
+            if (user != null)
+            {
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(UsersViewModel model, string email, string password)
+        {
+            IdentityUser user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                IdentityResult validPass = null;
+                if (!string.IsNullOrEmpty(password))
+                {
+                    validPass = await _passwordValidator.ValidateAsync(_userManager, user, password);
+
+                    if (validPass.Succeeded)
+                    {
+                        user.PasswordHash = _passwordHasher.HashPassword(user, password);
+                    }
+                    else
+                    {
+                        AddErrorsFromResult(validPass);
+                    }
+                }
+
+                IdentityResult result = new IdentityResult();
+
+                if (password != string.Empty)
+                    result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    //Update user details...
+                    User updateUser = _repositoryWrapper.User.FindByCondition(u => u.Email == email).FirstOrDefault();
+                    updateUser.Balance = model.Balance;
+                    updateUser.isActive = model.IsActive;
+                    _repositoryWrapper.User.Update(updateUser);
+                    _repositoryWrapper.User.Save();
+                }
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View(user);
+        }
+        //--:Edit User
 
         private void AddErrorsFromResult(IdentityResult result)
         {
