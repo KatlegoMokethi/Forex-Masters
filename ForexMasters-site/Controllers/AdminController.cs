@@ -81,6 +81,13 @@ namespace ForexMasters_site.Controllers
             ModelState.AddModelError("", "Error: Flashcard could not be created!");
             return View();
         }
+        public IActionResult DeleteFlashcard(int id)
+        {
+            Flashcard card = _repositoryWrapper.Flashcard.GetById(id);
+            _repositoryWrapper.Flashcard.Delete(card);
+            _repositoryWrapper.Flashcard.Save();
+            return Redirect("/Masterclass/ViewFlashcards");
+        }
         //:Flashcard
 
         //Category
