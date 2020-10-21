@@ -37,8 +37,20 @@ namespace ForexMasters_site.Controllers
 
         public IActionResult Topics(int id)
         {
-            var Topics = _repository.Topic.FindAll().Where(t => t.CategoryID == id);
-            return View(Topics);
+            var topics = _repository.Topic.FindAll().Where(t => t.CategoryID == id);
+            if (User.IsInRole("Admin"))
+                return View(topics);
+            else
+            {
+                bool approved = _repository.User.FindByCondition(u => u.Name == User.Identity.Name)
+                                            .FirstOrDefault()
+                                            .isActive;
+
+                if (approved)
+                    return View(topics);
+                else
+                    return Redirect("/Masterclass/AccessDenied");
+            }
         }
         public IActionResult TopicDetail(string id)
         {
@@ -46,6 +58,10 @@ namespace ForexMasters_site.Controllers
             ViewBag.Videos = _repository.Video.FindByCondition(v => v.TopicID == id);
             ViewBag.Documents = _repository.Document.FindByCondition(d => d.TopicID == id);
             return View(topic);
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
