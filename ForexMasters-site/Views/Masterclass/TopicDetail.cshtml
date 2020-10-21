@@ -26,7 +26,7 @@
         <h4>Presentation:</h4>
         @foreach (Video video in @ViewBag.Videos)
         {
-            <video width="320" height="240" controls>
+            <video width="320" height="240" controls controlsList="nodownload">
                 <source src="@video.FileURL" type="video/mp4">
             </video>
         }
