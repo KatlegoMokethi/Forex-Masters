@@ -5,18 +5,18 @@
 }
 <!-- TO DO: DONE -->
     <div class="container pb-3  text-center">
-        <h1 class="display-4 pb-3 text-primary">COURSES</h1>
+        <h1 class="display-4 pb-3">COURSES</h1>
         @if (Model.Count() > 0)
         {
-            <div class="card-columns d-flex justify-content-center">
+            <div class="row card-columns d-flex justify-content-center">
                 @foreach (Category category in Model)
                 {
-                    <div class="card" style="background-color:black;">
+                    <div class="col-sm-12 col-md-4 card" style="background-color:black;">
                         <div class="card-body">
-                            <span class="fa fa-folder fa-10x" style="color: white;"></span>
+                            <span class="fa fa-folder fa-8x" style="color: blue;"></span>
                             <div class="card-text">
                                 <h3>
-                                    <a asp-controller="Masterclass" asp-action="Topics" asp-route-id="@category.CategoryID">@category.CategoryName</a>
+                                    <a asp-controller="Masterclass" asp-action="Topics" asp-route-id="@category.CategoryID" class="text-white">@category.CategoryName</a>
                                 </h3>
                             </div>
                         </div>
