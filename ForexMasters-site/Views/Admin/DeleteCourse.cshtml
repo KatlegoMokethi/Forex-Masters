@@ -1,0 +1,36 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Delete Category";
+}
+
+<div class="container text-white">
+    <h1>Create Category</h1>
+    <hr class="bg-warning" />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="DeleteCourse" asp-controller="Admin" method="post">
+                @if (ViewBag.Categories > 0)
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>Categories:</label>
+                        <select asp-for="CategoryID" class="form-control"
+                                asp-items="ViewBag.CategoryID">
+                            <option value="">--- Select Category ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+                }
+                else
+                {
+                    <p>
+                        No Categories Available!
+                    </p>
+                }
+            </form>
+        </div>
+    </div>
+</div>
