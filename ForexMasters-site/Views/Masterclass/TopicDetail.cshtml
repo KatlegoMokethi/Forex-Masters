@@ -4,31 +4,49 @@
     ViewData["Title"] = "Topic";
 }
 <!-- TO DO: DONE -->
-<div class="container pb-3 text-white">
-    <h2 class="display-4 text-primary">@Model.Name</h2>
-    @if (Model.Description != null)
-    {
-        <h4>Description:</h4>
-        <p>@Model.Description</p>
-    }
-    <div id="documents">
-        <h4>Document(s):</h4>
-        <ul>
-            @foreach (Document document in @ViewBag.Documents)
+<div id="MasterclassBG" style="background-image: url('/images/hands-shake.jpg');">
+    <div class="container text-white">
+        <form asp-action="DeleteTopic" asp-controller="Admin" asp-route-id="@Model.TopicID" method="post">
+            @if (User.IsInRole("Admin"))
             {
-                <li>
-                    <a href="@document.FileURL">@document.Name</a>
-                </li>
+                <button type="submit" class="btn btn-danger mt-3">
+                    <i class="fa fa-minus-circle" style="color: white;"></i> Delete
+                </button>
             }
-        </ul>
-    </div>
-    <div id="videos">
-        <h4>Presentation:</h4>
-        @foreach (Video video in @ViewBag.Videos)
+        </form>
+
+        <h3 class="text-center font-weight-bold text-uppercase pt-3">@Model.Name</h3>
+
+        <div id="videos">
+            <h5>Presentation:</h5>
+            <div class="row d-flex justify-content-center">
+                @foreach (Video video in @ViewBag.Videos)
+                {
+                    <div class="col-sm-12 col-md-6">
+                        <video controls controlsList="nodownload" style="width:80%;">
+                            <source src="@video.FileURL" type="video/mp4">
+                        </video>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @if (Model.Description != null)
         {
-            <video width="320" height="240" controls controlsList="nodownload">
-                <source src="@video.FileURL" type="video/mp4">
-            </video>
+            <h4>Description:</h4>
+            <p>@Model.Description</p>
         }
+
+        <div id="documents">
+            <h5>Document(s):</h5>
+            <p>
+                @foreach (Document document in @ViewBag.Documents)
+                {
+                    <a href="@document.FileURL" class="text-danger font-weight-bold">@document.Name</a>
+                    <br />
+                }
+            </p>
+        </div>
+
     </div>
 </div>
