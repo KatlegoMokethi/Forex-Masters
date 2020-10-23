@@ -1,18 +1,20 @@
 ﻿@model User
-<div class="container text-white pt-5">
-    <div id="Welcome" class="text-center">
-        <p>
-            @if (@Model != null)
-            {
-                <img src="@Model.PictureURL" alt="@Model.Name" style="width:50%" />
-            }
-        </p>
-        <h1>Welcome to Forex Masters Masterclass</h1>
-        <br />
-        <h3>
-            @User.Identity.Name
-        </h3>
-        <div>
+<div id="MasterclassBG" style="background-image: url('/images/hands-shake.jpg'); height:100vh;">
+    <div class="container text-white pt-5">
+        <div id="Welcome" class="text-center">
+            <p>
+                @if (@Model != null)
+                {
+                    <img src="@Model.PictureURL" alt="@Model.Name" style="width:50%" />
+                }
+            </p>
+            <h1><em>Welcome to Forex Masters Masterclass</em></h1>
+            <br />
+            <h3>
+                @User.Identity.Name
+            </h3>
+            <div>
+            </div>
         </div>
     </div>
 </div>
