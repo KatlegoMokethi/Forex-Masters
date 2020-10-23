@@ -84,6 +84,8 @@ namespace ForexMasters_site.Controllers
         public IActionResult DeleteFlashcard(int id)
         {
             Flashcard card = _repositoryWrapper.Flashcard.GetById(id);
+            string deletepath = $@"wwwroot\{card.PictureURL}";
+            System.IO.File.Delete(deletepath);
             _repositoryWrapper.Flashcard.Delete(card);
             _repositoryWrapper.Flashcard.Save();
             return Redirect("/Masterclass/ViewFlashcards");
@@ -95,6 +97,7 @@ namespace ForexMasters_site.Controllers
         {
             ViewBag.CategoryID = new SelectList(_repositoryWrapper.Category.FindAll(),
                 "CategoryID", "CategoryName", selectedCategory);
+            ViewBag.Categories = _repositoryWrapper.Category.FindAll().Count();
         }
         public IActionResult CreateCategory()
         {
@@ -119,6 +122,52 @@ namespace ForexMasters_site.Controllers
         }
         //:Category
 
+        public IActionResult DeleteCourse()
+        {
+            PopulateCategoryDDL();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult DeleteCourse(Category category)
+        {
+            //Get Topics associated with the category
+            List<Topic> Topics = _repositoryWrapper.Topic.FindByCondition(t => t.CategoryID == category.CategoryID).ToList();
+
+            if (Topics.Count > 0)
+            {
+                string deletepath = string.Empty;
+                //Delete each topic with its contents
+                foreach (Topic topic in Topics)
+                {
+                    //Videos
+                    List<Video> Videos = _repositoryWrapper.Video.FindByCondition(v => v.TopicID == topic.TopicID).ToList();
+                    foreach (Video video in Videos)
+                    {
+                        deletepath = $@"wwwroot\{video.FileURL}";
+                        System.IO.File.Delete(deletepath);
+                        _repositoryWrapper.Video.Delete(video);
+                    }
+                    _repositoryWrapper.Video.Save();
+
+                    //Documents
+                    List<Document> Documents = _repositoryWrapper.Document.FindByCondition(d => d.TopicID == topic.TopicID).ToList();
+                    foreach (Document document in Documents)
+                    {
+                        deletepath = $@"wwwroot\{document.FileURL}";
+                        System.IO.File.Delete(deletepath);
+                        _repositoryWrapper.Document.Delete(document);
+                    }
+                    _repositoryWrapper.Document.Save();
+
+                    _repositoryWrapper.Topic.Delete(topic);
+                    _repositoryWrapper.Topic.Save();
+                }
+            }
+            _repositoryWrapper.Category.Delete(category);
+            _repositoryWrapper.Category.Save();
+
+            return Redirect("/Masterclass/Index");
+        }
         //Topic
         public IActionResult CreateTopic()
         {
@@ -219,12 +268,68 @@ namespace ForexMasters_site.Controllers
             PopulateCategoryDDL();
             return View();
         }
+        [HttpPost]
+        public IActionResult DeleteTopic(string id)
+        {
+            Topic topic = _repositoryWrapper.Topic.FindByCondition(t => t.TopicID == id).FirstOrDefault();
+            List<Video> Videos = _repositoryWrapper.Video.FindByCondition(v => v.TopicID == id).ToList();
+            List<Document> Documents = _repositoryWrapper.Document.FindByCondition(d => d.TopicID == id).ToList();
+
+            string deletepath = string.Empty;
+            foreach (Video video in Videos)
+            {
+                deletepath = $@"wwwroot\{video.FileURL}";
+                System.IO.File.Delete(deletepath);
+                _repositoryWrapper.Video.Delete(video);
+            }
+            _repositoryWrapper.Video.Save();
+
+            foreach (Document document in Documents)
+            {
+                deletepath = $@"wwwroot\{document.FileURL}";
+                System.IO.File.Delete(deletepath);
+                _repositoryWrapper.Document.Delete(document);
+            }
+            _repositoryWrapper.Document.Save();
+
+            _repositoryWrapper.Topic.Delete(topic);
+            _repositoryWrapper.Topic.Save();
+
+            return Redirect("/Masterclass/Courses");
+        }
         //:Topic
 
         //:CMS
         public ViewResult Index()
         {
             return View(_userManager.Users);
+        }
+        public ViewResult TopicsPasswords()
+        {
+            var topics = _repositoryWrapper.Topic.FindAll();
+            return View(topics);
+        }
+        public IActionResult EditTopicPassword(string id)
+        {
+            Topic topic = _repositoryWrapper.Topic.FindByCondition(t => t.TopicID == id).FirstOrDefault();
+            return View(topic);
+        }
+
+        [HttpPost]
+        public IActionResult EditTopicPassword(string id, string name, string password)
+        {
+            Topic topic = _repositoryWrapper.Topic.FindByCondition(t => t.TopicID == id).FirstOrDefault();
+
+            if (password != null)
+                topic.Password = password;
+
+            if(name != null)
+                topic.Name = name;
+
+            _repositoryWrapper.Topic.Update(topic);
+            _repositoryWrapper.Topic.Save();
+
+            return RedirectToAction("TopicsPasswords");
         }
         public ViewResult Create()
         {
