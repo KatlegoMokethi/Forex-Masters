@@ -37,7 +37,7 @@ namespace ForexMasters_site.Controllers
 
         public IActionResult Topics(int id)
         {
-            var topics = _repository.Topic.FindAll().Where(t => t.CategoryID == id);
+            var topics = _repository.Topic.FindAll().Where(t => t.CategoryID == id).OrderBy(t => t.Name);
             if (User.IsInRole("Admin"))
                 return View(topics);
             else
@@ -52,11 +52,30 @@ namespace ForexMasters_site.Controllers
                     return Redirect("/Masterclass/AccessDenied");
             }
         }
-        public IActionResult TopicDetail(string id)
+        public IActionResult EnterPassword(string id)
         {
             Topic topic = _repository.Topic.FindByCondition(t => t.TopicID == id).FirstOrDefault();
-            ViewBag.Videos = _repository.Video.FindByCondition(v => v.TopicID == id);
-            ViewBag.Documents = _repository.Document.FindByCondition(d => d.TopicID == id);
+            return View(topic);
+        }
+        [HttpPost]
+        public IActionResult EnterPassword(string id, string password)
+        {
+            Topic topic = _repository.Topic.FindByCondition(t => t.TopicID == id).FirstOrDefault();
+            
+            if (password.CompareTo(topic.Password) == 0)
+                return RedirectToAction("TopicDetail", topic);
+            else
+            {
+                ViewBag.Message = "failed";
+                return View(topic);
+            }
+
+
+        }
+        public IActionResult TopicDetail(Topic topic)
+        {
+            ViewBag.Videos = _repository.Video.FindByCondition(v => v.TopicID == topic.TopicID);
+            ViewBag.Documents = _repository.Document.FindByCondition(d => d.TopicID == topic.TopicID);
             return View(topic);
         }
         public IActionResult AccessDenied()
