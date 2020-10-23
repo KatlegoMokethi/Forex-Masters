@@ -5,16 +5,17 @@
 }
 <!-- TO DO: DONE -->
 <div class="container pb-3">
-    <h1 class="display-4 pb-3 text-primary">Topics</h1>
+    <h1 class="text-center text-primary font-weight-bold text-uppercase">Topics</h1>
+
     @if (Model.Count() > 0)
     {
         @foreach (Topic topic in Model)
         {
-            <h3>
-                <a asp-controller="Masterclass" asp-action="TopicDetail" asp-route-id="@topic.TopicID" class="text-white">
-                    <span class="fa fa-folder" style="color: blue;"></span> @topic.Name
+            <p>
+                <a asp-controller="Masterclass" asp-action="EnterPassword" asp-route-id="@topic.TopicID" class="text-white">
+                    <i class="fa fa-folder fa-2x" style="color: blue;"></i> <span style="font-size: medium;">@topic.Name</span>
                 </a>
-            </h3>
+            </p>
         }
     }
     else
