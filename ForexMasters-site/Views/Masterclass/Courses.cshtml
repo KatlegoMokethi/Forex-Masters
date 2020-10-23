@@ -4,16 +4,17 @@
     ViewData["Title"] = "Courses";
 }
 <!-- TO DO: DONE -->
+<div id="MasterclassBG" style="background-image: url('/images/hands-shake.jpg');">
     <div class="container pb-3  text-center">
-        <h1 class="display-4 pb-3">COURSES</h1>
+        <h1 class="text-center font-weight-bold text-uppercase pb-3">COURSES</h1>
         @if (Model.Count() > 0)
         {
-            <div class="row card-columns d-flex justify-content-center">
+            <div class="row d-flex justify-content-center">
                 @foreach (Category category in Model)
                 {
-                    <div class="col-sm-12 col-md-4 card" style="background-color:black;">
+                    <div class="col-sm-12 col-md-4">
                         <div class="card-body">
-                            <span class="fa fa-folder fa-8x" style="color: blue;"></span>
+                            <span class="fa fa-folder fa-8x" style="color: deepskyblue;"></span>
                             <div class="card-text">
                                 <h3>
                                     <a asp-controller="Masterclass" asp-action="Topics" asp-route-id="@category.CategoryID" class="text-white">@category.CategoryName</a>
@@ -29,3 +30,4 @@
             <p class="text-center">No courses available as yet!</p>
         }
     </div>
+</div>
