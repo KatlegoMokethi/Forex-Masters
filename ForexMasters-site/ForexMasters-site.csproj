@@ -6,6 +6,14 @@
     <RootNamespace>ForexMasters_site</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="wwwroot\Controllers\AccountController.cs" />
+    <Compile Include="wwwroot\Controllers\AdminController.cs" />
+    <Compile Include="wwwroot\Controllers\HomeController.cs" />
+    <Compile Include="wwwroot\Controllers\MasterclassController.cs" />
+    <Compile Include="wwwroot\Controllers\RoleAdminController.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
