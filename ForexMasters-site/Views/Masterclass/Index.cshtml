@@ -1,19 +1,62 @@
 ﻿@model User
-<div id="MasterclassBG" style="background-image: url('/images/hands-shake.jpg'); height:100vh;">
-    <div class="container text-white pt-5">
+<div id="MasterclassBG" style="background-image: url('/images/hands-shake.jpg');">
+    <div class="container text-white pt-5 pb-5">
         <div id="Welcome" class="text-center">
-            <p>
-                @if (@Model != null)
-                {
-                    <img src="@Model.PictureURL" alt="@Model.Name" style="width:50%" />
-                }
-            </p>
-            <h1><em>Welcome to Forex Masters Masterclass</em></h1>
+            <h1 class="font-weight-bold">Welcome to Forex Masters Masterclass</h1>
             <br />
-            <h3>
-                @User.Identity.Name
-            </h3>
-            <div>
+            <div class="text-dark">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <h5 class="text-center">@Model.Name</h5>
+                                    @if (@Model.PictureURL is null)
+                                    {
+                                        <img src="~/images/user_icon.png" width="80" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.PictureURL" width="80" />
+                                    }
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    @if (@Model.Balance > 0)
+                                    {
+                                        <div class="card-text">
+                                            <h6 class="font-weight-bold text-uppercase">Outstanding Balance:</h6>
+                                            <div class="card-body">
+                                                <h5>$ @Model.Balance.ToString("0.00")</h5>
+                                                @if (!@Model.isActive)
+                                                {
+                                                    <p class="text-danger">
+                                                        Account Not Approved!
+                                                    </p>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @if (@Model.isActive)
+                                        {
+                                            <img src="~/images/verified_account.png" />
+                                            <p class="text-dark">
+                                                Verified Account!
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-danger">
+                                                Account Not Approved!
+                                            </p>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
