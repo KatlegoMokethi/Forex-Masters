@@ -23,7 +23,7 @@
                 @foreach (Video video in @ViewBag.Videos)
                 {
                     <div class="col-sm-12 col-md-6">
-                        <video controls controlsList="nodownload" style="width:80%;">
+                        <video oncontextmenu="return false;" controls controlsList="nodownload" style="width:80%;">
                             <source src="@video.FileURL" type="video/mp4">
                         </video>
                     </div>
