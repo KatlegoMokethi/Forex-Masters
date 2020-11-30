@@ -1,0 +1,45 @@
+﻿@model ForexMasters_site.Models.ViewModels.PDFViewModel
+
+@{
+    ViewData["Title"] = "Add PDF(s)";
+}
+
+<div class="container text-white">
+    <h1>Add PDF(s)</h1>
+    <hr class="bg-warning" />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreatePDF" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Documents"></label>
+                    <div class="custom-file">
+                        <input multiple asp-for="Documents" class="form-control custom-file-input" />
+                        <label asp-for="Documents" class="form-control custom-file-label">Choose file(s)...</label>
+                    </div>
+                    <span asp-validation-for="Documents" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+
+                @section scripts{
+                    <script>
+                        $(document).ready(function () {
+                            $('.custom-file-input').on("change", function () {
+                                var fileLabel = $(this).next('.custom-file-label');
+                                var files = $(this)[0].files;
+                                if (files.length > 1) {
+                                    fileLabel.html(files.length + ' files selected');
+                                }
+                                else if (files.length == 1) {
+                                    fileLabel.html(files[0].name);
+                                }
+                            });
+                        });
+                    </script>
+                }
+            </form>
+        </div>
+    </div>
+</div>
