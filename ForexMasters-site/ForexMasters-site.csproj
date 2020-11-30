@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="wwwroot\Controllers\AccountController.cs" />
-    <Compile Include="wwwroot\Controllers\AdminController.cs" />
-    <Compile Include="wwwroot\Controllers\HomeController.cs" />
-    <Compile Include="wwwroot\Controllers\MasterclassController.cs" />
-    <Compile Include="wwwroot\Controllers\RoleAdminController.cs" />
+    <Content Include="Controllers\AccountController.cs" />
+    <Content Include="Controllers\AdminController.cs" />
+    <Content Include="Controllers\HomeController.cs" />
+    <Content Include="Controllers\MasterclassController.cs" />
+    <Content Include="Controllers\RoleAdminController.cs" />
   </ItemGroup>
 
 
