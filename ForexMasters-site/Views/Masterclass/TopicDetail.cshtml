@@ -4,7 +4,8 @@
     ViewData["Title"] = "Topic";
 }
 <!-- TO DO: DONE -->
-<div id="MasterclassBG" style="background-image: url('/images/hands-shake.jpg');">
+<div id="MasterclassBG" style="background-image: url('/images/recommended-bg.jpeg'); background-repeat: no-repeat;
+    background-size: 100% 100%;">
     <div class="container text-white">
         <form asp-action="DeleteTopic" asp-controller="Admin" asp-route-id="@Model.TopicID" method="post">
             @if (User.IsInRole("Admin"))
