@@ -25,7 +25,7 @@ namespace ForexMasters_site
             services.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("RemoteDbConnection")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                .AddEntityFrameworkStores<AppDbContext>()
